@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-3.0.xsd
+
+
+			http://www.springframework.org/schema/mvc
+			http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <!-- 使Spring支持自动检测组件，如注解的Controller -->
+    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager"/>
+    <context:property-placeholder location="classpath:config.properties"/>
+    <context:component-scan base-package="com.acc.yys">
+        <context:include-filter type="regex"
+                                expression="com.acc.yys.controller.*"/>
+    </context:component-scan>
+    <!--<aop:aspectj-autoproxy proxy-target-class="true"/>-->
+    <!-- Spring3.2开始更改了对Ajax请求的支持 -->
+    <bean id="contentNegotiationManager"
+          class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="favorPathExtension"
+                  value="false"/>
+        <property name="favorParameter"
+                  value="false"/>
+        <property name="ignoreAcceptHeader"
+                  value="false"/>
+        <property name="mediaTypes">
+            <value>
+                atom=application/atom+xml
+                html=text/html
+                json=application/json
+                *=*/*
+            </value>
+        </property>
+    </bean>
+
+    <!-- 本地化 -->
+    <bean id="messageSource"
+          class="org.springframework.context.support.ResourceBundleMessageSource"
+          p:basename="message">
+    </bean>
+    <!-- 文件上传 -->
+    <!--<bean code="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        &lt;!&ndash; 设置上传文件的最大尺寸为3MB &ndash;&gt;
+        <property absolutePath="maxUploadSize">
+            <value>3145728</value>
+        </property>
+    </bean>-->
+    <!--&lt;!&ndash; velocity引擎 &ndash;&gt;
+    <bean id="velocityConfigurer"
+          class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="resourceLoaderPath">
+            <value>/WEB-INF/velocity/</value>
+            &lt;!&ndash; 页面文件路径相对于webapp &ndash;&gt;
+        </property>
+        <property name="velocityProperties">
+            <props>
+                <prop key="input.encoding">utf-8</prop>
+                <prop key="output.encoding">utf-8</prop>
+                <prop key="contentType">text/html;charset=utf-8</prop>
+            </props>
+        </property>
+    </bean>
+
+    &lt;!&ndash; velocity视图解析器 &ndash;&gt;
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+        <property name="requestContextAttribute"
+                  value="rc"/>
+        <property name="exposeSessionAttributes"
+                  value="true"/>
+        <property name="contentType"
+                  value="text/html;charset=utf-8"/>
+        <property name="dateToolAttribute"
+                  value="dateTool"/>
+        <property name="numberToolAttribute"
+                  value="numberTool"/>
+        <property name="suffix"
+                  value=".vm"/>
+    </bean>-->
+
+    <mvc:default-servlet-handler/>
+    <mvc:resources mapping="/css/**"
+                   location="/css/"
+                   cache-period="2592000"/>
+    <mvc:resources mapping="/img/**"
+                   location="/img/"
+                   cache-period="2592000"/>
+    <mvc:resources mapping="/js/**"
+                   location="/js/"
+                   cache-period="2592000"/>
+    <mvc:resources mapping="/fonts/**"
+                   location="/fonts/"
+                   cache-period="2592000"/>
+    <mvc:resources mapping="/favicon.ico"
+                   location="/favicon.ico"
+                   cache-period="2592000"/>
+
+    <!--<mvc:interceptors>
+        <bean class="com.ifeng.dmp.web.interceptor.AuthInterceptor">
+            <constructor-arg index="0">
+                <value>${whitelist}</value>
+            </constructor-arg>
+        </bean>
+    </mvc:interceptors>-->
+</beans>

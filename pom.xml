@@ -14,6 +14,7 @@
         <org.springframework.version>4.1.6.RELEASE</org.springframework.version>
         <jackson2.version>2.6.1</jackson2.version>
         <mysql.version>5.1.39</mysql.version>
+        <guava.version>21.0</guava.version>
     </properties>
     <dependencies>
         <dependency>
@@ -136,6 +137,11 @@
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>1.0.27</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
     </dependencies>
     <build>
