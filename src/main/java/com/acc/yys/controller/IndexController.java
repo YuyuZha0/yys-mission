@@ -1,5 +1,6 @@
 package com.acc.yys.controller;
 
+import com.acc.yys.util.HttpRequestUtils;
 import com.acc.yys.util.SimpleTemplate;
 import com.google.common.collect.ImmutableMap;
 import org.slf4j.Logger;
@@ -14,6 +15,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.UUID;
 
@@ -31,29 +33,32 @@ public final class IndexController {
     @Value("${index.cache.enable}")
     private boolean enableCache;
 
-    private volatile String body = null;
+    private volatile SimpleTemplate template = null;
 
     @ResponseBody
     @RequestMapping("/index")
     public String welcome2Index(HttpServletRequest request) {
+        String ip = HttpRequestUtils.getRequestIp(request);
+        logger.info("record access from [{}] on [{}]", ip, LocalDateTime.now().toString());
         if (!enableCache) {
             Map<String, String> args = ImmutableMap.of("version", UNIQUE_PUBLISH_ID,
                     "context", request.getContextPath());
-            return readFromFileSystem(request, args);
+            SimpleTemplate template = readFromFileSystem(request);
+            return template.render(args);
         }
-        if (body == null) {
+        if (template == null) {
             synchronized (this) {
-                if (body == null) {
-                    Map<String, String> args = ImmutableMap.of("version", UNIQUE_PUBLISH_ID,
-                            "context", request.getContextPath());
-                    body = readFromFileSystem(request, args);
+                if (template == null) {
+                    template = readFromFileSystem(request);
                 }
             }
         }
-        return body;
+        Map<String, String> args = ImmutableMap.of("version", UNIQUE_PUBLISH_ID,
+                "context", request.getContextPath());
+        return template.render(args);
     }
 
-    private static String readFromFileSystem(HttpServletRequest request, Map<String, String> args) {
+    private static SimpleTemplate readFromFileSystem(HttpServletRequest request) {
         String root = request.getServletContext().getRealPath("/");
         StringBuilder builder = new StringBuilder(root);
         if (!root.endsWith(File.separator))
@@ -64,11 +69,10 @@ public final class IndexController {
                 .toString();
 
         try (InputStream is = new FileInputStream(indexPath)) {
-            SimpleTemplate template = new SimpleTemplate(is);
-            return template.render(args);
+            return new SimpleTemplate(is);
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
         }
-        return "";
+        return new SimpleTemplate("");
     }
 }
