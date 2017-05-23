@@ -1,5 +1,6 @@
 package com.acc.yys.dao;
 
+import com.acc.yys.util.SQLMgr;
 import com.google.common.collect.ImmutableList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -28,7 +29,7 @@ public final class CharacterDao {
 
 
     public List<String> queryAllCharacterNames() {
-        return template.query("", new ResultSetExtractor<List<String>>() {
+        return template.query(SQLMgr.getSqlById("queryAllCharacterNames"), new ResultSetExtractor<List<String>>() {
             @Override
             public List<String> extractData(ResultSet resultSet) throws SQLException, DataAccessException {
                 List<String> list = new ArrayList<>();
