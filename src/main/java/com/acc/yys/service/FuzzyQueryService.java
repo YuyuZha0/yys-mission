@@ -48,7 +48,7 @@ public final class FuzzyQueryService {
     }
 
     private static List<QueryRanker> guessFuzzy(String fuzzy, int limit, List<QueryIndex> indices) {
-        if (fuzzy == null || fuzzy.length() == 0)
+        if (fuzzy == null || fuzzy.length() == 0 || limit < 1)
             return Collections.emptyList();
         List<QueryRanker> rankerList = new ArrayList<>();
         if (CharMatcher.javaLetter().matchesAllOf(fuzzy)) {
@@ -72,8 +72,8 @@ public final class FuzzyQueryService {
     }
 
     private static int getScore(String source, String target) {
-        int n = FastStrings.editDistance(source, target);
-        return source.length() - target.length() - n;
+        int e = FastStrings.editDistance(source, target);
+        return source.length() - e;
     }
 
 
@@ -103,7 +103,9 @@ public final class FuzzyQueryService {
 
         @Override
         public int compareTo(QueryRanker o) {
-            return Integer.compare(o.score, score);
+            if (score != o.score)
+                return Integer.compare(o.score, score);
+            return o.query.compareTo(query);
         }
 
         public String getQuery() {
@@ -115,7 +117,7 @@ public final class FuzzyQueryService {
         }
     }
 
-    public static void main(String[] args) throws PinyinException {
-        System.out.println(PinyinHelper.convertToPinyinString("中国", "", PinyinFormat.WITHOUT_TONE));
+    public static void main(String[] args) {
+        System.out.println(getScore("ABC", "ABCD"));
     }
 }
