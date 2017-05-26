@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<characters>
+  <character name="花鸟卷" quality="ssr" image-name="644e5b32e0dd764ee973551d92a0ca79.jpg"/>
+  <character name="妖琴师" quality="sr" image-name="11be55ed4d77408addf718d49ea915d4.jpg"/>
+  <character name="管狐" quality="r" image-name="c0f631d01a434874e5f75dbb6744a6c5.jpg"/>
+  <character name="妖狐" quality="sr" image-name="9f1096c90480f7787580db90f373224d.jpg"/>
+  <character name="河童" quality="r" image-name="8d61af9840f65ff0b511bbd270a7d09d.jpg"/>
+  <character name="蝴蝶精" quality="r" image-name="d11d387e06d8c1cac628272c59d979b0.jpg"/>
+  <character name="清姬" quality="sr" image-name="068ff0074be6b7fae442ddfed4676406.jpg"/>
+  <character name="白狼" quality="sr" image-name="d4be9575cec0aad7ece17d4807d13d01.jpg"/>
+  <character name="彼岸花" quality="ssr" image-name="65b407f2bce3ec979b5a2fa1ea9c31ba.jpg"/>
+  <character name="吸血姬" quality="sr" image-name="a5ddce86498e38d564e34aa58c5317f6.jpg"/>
+  <character name="金鱼姬" quality="sr" image-name="beae5c9e480947c03ed286343a60073d.jpg"/>
+  <character name="般若" quality="sr" image-name="b0a9c05683c444ef4137bb87ac41b109.jpg"/>
+  <character name="鸦天狗" quality="r" image-name="b0f46aef33df52dcd8360601f4aa30d9.jpg"/>
+  <character name="犬神" quality="sr" image-name="455fd98425e3b177465dab99d76d2e7a.jpg"/>
+  <character name="食发鬼" quality="r" image-name="673c47ec6e64f5434e87ee71474437f5.jpg"/>
+  <character name="萤草" quality="r" image-name="bc4d4e8fd1003eb4b493ee9112d3f7c9.jpg"/>
+  <character name="络新妇" quality="sr" image-name="eec8e354ca9e735dd151062badb8578f.jpg"/>
+  <character name="跳跳弟弟" quality="r" image-name="7cba86e28ecf82081be79499b876b7c8.jpg"/>
+  <character name="山兔" quality="r" image-name="2cc445e4b84524fa48662bb431e33024.jpg"/>
+  <character name="青蛙瓷器" quality="r" image-name="3862862462673dedaaffbf5b5cc9c517.jpg"/>
+  <character name="童女" quality="r" image-name="7c5f793d8616f881d34f6bc015565493.jpg"/>
+  <character name="九命猫" quality="r" image-name="a433c04902c58210368057ddbc199059.jpg"/>
+  <character name="鸩" quality="sr" image-name="53209a2e67f815016b9b750bead395b0.jpg"/>
+  <character name="铁鼠" quality="r" image-name="00179941315cf4f36ece4b82b4e92695.jpg"/>
+  <character name="青坊主" quality="sr" image-name="1a11d47dfd13ce41f73b60f65eb147fc.jpg"/>
+  <character name="镰鼬" quality="sr" image-name="cc15e667b9e91e59d0fb5de3a22366f9.jpg"/>
+  <character name="鲤鱼精" quality="r" image-name="64db09013135452c5ce26f7e5a1f58ea.jpg"/>
+  <character name="二口女" quality="sr" image-name="81c3b4bda3fa1c4487e9ed684be15e3a.jpg"/>
+  <character name="雪女" quality="sr" image-name="8a36f5634e209037eabbb29e955f10e6.jpg"/>
+  <character name="骨女" quality="sr" image-name="76dcf3c1b1d44d17f42c04dcd66b2b16.jpg"/>
+  <character name="辉夜姬" quality="ssr" image-name="a3f9e44a4748c50655439e8f95e0c323.jpg"/>
+  <character name="妖刀姬" quality="ssr" image-name="772b288b37709651c3b4f4f895427ea4.jpg"/>
+  <character name="食梦貘" quality="sr" image-name="32959e10b741a6fd2c322488fe4c272c.jpg"/>
+  <character name="惠比寿" quality="sr" image-name="060bff12346c27ab530792a848866cf0.jpg"/>
+  <character name="饿鬼" quality="r" image-name="67a15ca6c5d843968a0e09ea89d590f8.jpg"/>
+  <character name="匣中少女" quality="sr" image-name="edb791b1c3fd4d0a599a2b6c5bdea5a3.jpg"/>
+  <character name="青行灯" quality="ssr" image-name="4f1c599ecb0f3da841fb31be76c61d02.jpg"/>
+  <character name="觉" quality="r" image-name="2a3e34601346185f94a67b530a149b1f.jpg"/>
+  <character name="山童" quality="r" image-name="c3b2f1df3984b75a58d458e07d702ae9.jpg"/>
+  <character name="鬼女红叶" quality="sr" image-name="09ad7bb676cf8488b31330ed8b0c7575.jpg"/>
+  <character name="大天狗" quality="ssr" image-name="1a5ec2a9fdfbbbde77b39946480b32a2.jpg"/>
+  <character name="孟婆" quality="sr" image-name="802ab180ea185ce75698c4d01bb84630.jpg"/>
+  <character name="一目连" quality="ssr" image-name="2e7463a132a541cc624375c08f7637f2.jpg"/>
+  <character name="荒川之主" quality="ssr" image-name="ac7a69b5ea22a791d331dee430545044.jpg"/>
+  <character name="巫蛊师" quality="r" image-name="76497396c786c6eac2ea57716e150c05.jpg"/>
+  <character name="鬼使黑" quality="sr" image-name="a12b42abd39274b5f39973cb261741e5.jpg"/>
+  <character name="判官" quality="sr" image-name="5c9e00e6d9f8fd232cd5fe396595dcf5.jpg"/>
+  <character name="黑童子" quality="sr" image-name="a65809dc7e952eaf870727c02bac38d6.jpg"/>
+  <character name="两面佛" quality="ssr" image-name="fdafca0ee8259cf633672d091eaedb0b.jpg"/>
+  <character name="樱花妖" quality="sr" image-name="04e491cfb78b4fc8a5399ad5c0d195ec.jpg"/>
+  <character name="以津真天" quality="sr" image-name="70e9073e08cd0b61c23c9a54a57677d5.jpg"/>
+  <character name="童男" quality="r" image-name="551eb4ac897ee62de3c5e8ff5f944b3b.jpg"/>
+  <character name="白童子" quality="sr" image-name="5d4c13487639db33b6e4b9b79fe557e1.jpg"/>
+  <character name="独眼小僧" quality="r" image-name="4f616a6ef548464d263f80d9ef8b5491.jpg"/>
+  <character name="酒吞童子" quality="ssr" image-name="49be6ec7502fa98a7377cc8816bdc854.jpg"/>
+  <character name="雨女" quality="r" image-name="5ae1b4cb125b47cbc58a5a41a7af9029.jpg"/>
+  <character name="凤凰火" quality="sr" image-name="97f706fbb68a59c3083ba0765b8dfeaa.jpg"/>
+  <character name="座敷童子" quality="r" image-name="6c27647f0c46215cebf2a0481d9249ed.jpg"/>
+  <character name="三尾狐" quality="r" image-name="25e67ffef789cbc3db3ef32a1ee6566a.jpg"/>
+  <character name="狸猫" quality="r" image-name="e1b9ca8e0b62cd8fedd236549cc653a0.jpg"/>
+  <character name="兵俑" quality="r" image-name="ac6da5b961a9fab2ae885da93933d8ac.jpg"/>
+  <character name="首无" quality="r" image-name="298ed6358040de243c55b791a646e969.jpg"/>
+  <character name="丑时之女" quality="r" image-name="ff24c58c3ecfa067a9c3ff8c4aa117a8.jpg"/>
+  <character name="古笼火" quality="r" image-name="a6fbbd7922e8671058ff0b71ff1a7f3c.jpg"/>
+  <character name="武士之灵" quality="r" image-name="0adfb749115345e913914262b3b05045.jpg"/>
+  <character name="跳跳妹妹" quality="r" image-name="ff0b09834e8c4d18529a9d3e01c9fc01.jpg"/>
+  <character name="跳跳哥哥" quality="sr" image-name="7a9a61ba95492d05bdba64b8242f8972.jpg"/>
+  <character name="海坊主" quality="sr" image-name="566ab56c0b779cb29bfb1811da2967b4.jpg"/>
+  <character name="椒图" quality="r" image-name="93ed6163139ce8615f9dd7378e447da8.jpg"/>
+  <character name="夜叉" quality="sr" image-name="3991a5dc72539af96d87500eb0887521.jpg"/>
+  <character name="茨木童子" quality="ssr" image-name="157e103e9f9937e4ef0a1ca162db4113.jpg"/>
+  <character name="小鹿男" quality="ssr" image-name="9e554e5d14fb601c877be00f76375784.jpg"/>
+  <character name="荒" quality="ssr" image-name="bc46b9853caeef7061884b1cfb74007b.jpg"/>
+  <character name="姑获鸟" quality="sr" image-name="f68253a30db3f76d06bdd53d4136bdf4.jpg"/>
+  <character name="万年竹" quality="sr" image-name="2709fb09391284978eabe22182e79772.jpg"/>
+  <character name="鬼使白" quality="sr" image-name="84f5c066f53e2ce966c18c0ba3719103.jpg"/>
+  <character name="傀儡师" quality="sr" image-name="b3fa7f8a8943bf89d7e65f8fdbc843f3.jpg"/>
+  <character name="阎魔" quality="ssr" image-name="b1a251159d438018b677cf3f23fa862b.jpg"/>
+  <character name="烟烟罗" quality="sr" image-name="e3958b01ebd9a6f2e21d71d408e933d1.jpg"/>
+  <character name="桃花妖" quality="sr" image-name="dc0d0f08244c4ec346bc5fa5ca06a5dc.jpg"/>
+  <tip content="水池" ref="鲤鱼精"/>
+  <tip content="樱花树/红色" ref="三尾狐"/>
+  <tip content="单眼/石锤/怪力" ref="山童"/>
+  <tip content="黑镰/短刀" ref="鬼使黑"/>
+  <tip content="单眼/石菩萨 金刚经" ref="独眼小僧"/>
+  <tip content="鬼火/角 财富/幸运" ref="座敷童子"/>
+  <tip content="花/舞" ref="桃花妖"/>
+  <tip content="翅膀/羽衣 幼女" ref="童女"/>
+  <tip content="渔夫/海/胡须/杖" ref="海坊主"/>
+  <tip content="纸扇/书生 面具" ref="妖狐"/>
+  <tip content="人偶/操纵" ref="傀儡师"/>
+  <tip content="锤子/钉耙/剑" ref="镰鼬"/>
+  <tip content="铃铛/噩梦" ref="食梦貘"/>
+  <tip content="水球/河流/荷叶" ref="河童"/>
+  <tip content="蒲公英/治疗" ref="萤草"/>
+  <tip content="杖妖艳/红尾" ref="三尾狐"/>
+  <tip content="雉刀/翅膀 面具" ref="鸦天狗"/>
+  <tip content="二筒/瓷 出千" ref="青蛙瓷器"/>
+  <tip content="手鼓/小妖精 可爱" ref="蝴蝶精"/>
+  <tip content="汤碗/琴 牙牙" ref="孟婆"/>
+  <tip content="剑/雀/屋 守护" ref="犬神"/>
+  <tip content="柴犬 守护" ref="犬神"/>
+  <tip content="贝壳/扇子 尾巴" ref="椒图"/>
+  <tip content="云/鬼面 冥界" ref="阎魔"/>
+  <tip content="大翅膀/风 扇" ref="大天狗"/>
+  <tip content="羽毛/笛子 扇" ref="大天狗"/>
+  <tip content="翅膀/羽衣 献祭" ref="童男"/>
+  <tip content="剑/坚甲 石化" ref="兵俑"/>
+  <tip content="稻草人/咒锥" ref="丑时之女"/>
+  <tip content="冥界/白 夺命" ref="鬼使白"/>
+  <tip content="泪珠/雨/伞" ref="雨女"/>
+  <tip content="血/蝙蝠" ref="吸血姬"/>
+  <tip content="蜡烛/棺材" ref="跳跳哥哥"/>
+  <tip content="水泡/尾巴" ref="鲤鱼精"/>
+  <tip content="骷髅/怨念/剑" ref="骨女"/>
+  <tip content="蛊/虫子" ref="巫蛊师"/>
+  <tip content="蒲公英 叮~" ref="萤草"/>
+</characters>

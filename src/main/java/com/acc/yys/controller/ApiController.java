@@ -1,6 +1,6 @@
 package com.acc.yys.controller;
 
-import com.acc.yys.pojo.Chapter;
+import com.acc.yys.pojo.Character;
 import com.acc.yys.pojo.JsonBody;
 import com.acc.yys.service.FuzzyQueryService;
 import com.acc.yys.service.QueryService;
@@ -25,28 +25,26 @@ public final class ApiController {
     private QueryService queryService;
 
     @RequestMapping("getAutoComplement")
-    public JsonBody getAutoComplement(@RequestParam String query) {
+    public JsonBody getAutoComplement(@RequestParam String query,
+                                      @RequestParam(defaultValue = "5") int limit) {
         return JsonBody.builder()
-                .append("queryList", fuzzyQueryService.guessFuzzy(query, 5))
+                .append("queryList", fuzzyQueryService.guessRealMeaning(query, limit))
                 .msg("获取成功")
                 .build(JsonBody.OK);
     }
 
     @RequestMapping("getChapterList")
     public JsonBody getChapterList(@RequestParam String query) {
-        List<Chapter> chapterList = queryService.queryChapterByCharacterName(query);
-        if (chapterList.isEmpty()) {
-            List<FuzzyQueryService.QueryRanker> rankerList = fuzzyQueryService.guessFuzzy(query, 1);
-            if (!rankerList.isEmpty())
-                chapterList = queryService.queryChapterByCharacterName(rankerList.get(0).getQuery());
-        }
-        if (chapterList.isEmpty())
+        Character character = fuzzyQueryService.queryCharacter(query);
+        if (character == null)
             return JsonBody.builder()
-                    .msg("未查询到相关记录")
+                    .msg("未查找到对应式神")
                     .build(JsonBody.NOT_FOUND);
+        List<QueryService.QueryResult> queryResultList = queryService.queryChapter(character);
         return JsonBody.builder()
-                .msg("获取成功")
-                .append("chapterList", chapterList)
+                .append("character", character)
+                .append("queryResultList", queryResultList)
+                .msg("查询成功")
                 .build(JsonBody.OK);
     }
 }

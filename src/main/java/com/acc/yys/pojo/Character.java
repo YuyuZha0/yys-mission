@@ -8,37 +8,37 @@ import java.io.Serializable;
  * Created by zhaoyy on 2017/5/23.
  */
 public final class Character implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
-    private final int id;
     private final String name;
-    private final String imgsrc;
+    private final String imageName;
+    private final String quality;
 
-
-    public Character(int id, String name, String imgsrc) {
-        this.id = id;
+    public Character(String name, String imageName, String quality) {
         this.name = name;
-        this.imgsrc = imgsrc;
-    }
-
-    public int getId() {
-        return id;
+        this.imageName = imageName;
+        this.quality = quality;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getImgsrc() {
-        return imgsrc;
+    public String getImageName() {
+        return imageName;
+    }
+
+    public String getQuality() {
+        return quality;
     }
 
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("id", id)
                 .add("name", name)
-                .add("imgsrc", imgsrc)
+                .add("imageName", imageName)
+                .add("quality", quality)
                 .toString();
     }
 }

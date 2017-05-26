@@ -1,27 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sqls>
-    <sql id="queryChapterByCharacterName">
-        SELECT
-        c1.chapter_index,
-        c1.chapter_name,
-        b.battle_index,
-        r.round_number,
-        c2.character_name,
-        c2.character_imgsrc
-        FROM
-        tb_chapter c1
-        INNER JOIN tb_battle b ON b.chapter_id = c1.chapter_id
-        INNER JOIN tb_round r ON r.battle_id = b.battle_id
-        INNER JOIN tb_round_character rc ON rc.round_id = r.round_id
-        INNER JOIN tb_character c2 ON c2.character_id = rc.character_id
-        WHERE
-        c2.character_name = ?;
-    </sql>
 
-    <sql id="queryAllCharacterNames">
-        SELECT DISTINCT
-        character_name
-        FROM
-        tb_character;
-    </sql>
 </sqls>

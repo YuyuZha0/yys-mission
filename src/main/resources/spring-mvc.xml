@@ -89,11 +89,11 @@
     </bean>-->
 
     <mvc:default-servlet-handler/>
-    <mvc:resources mapping="/css/**"
-                   location="/css/"
+    <mvc:resources mapping="/assets/**"
+                   location="/assets/"
                    cache-period="2592000"/>
-    <mvc:resources mapping="/img/**"
-                   location="/img/"
+    <mvc:resources mapping="/images/**"
+                   location="/images/"
                    cache-period="2592000"/>
     <mvc:resources mapping="/js/**"
                    location="/js/"
