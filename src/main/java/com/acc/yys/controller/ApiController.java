@@ -40,7 +40,7 @@ public final class ApiController {
             return JsonBody.builder()
                     .msg("未查找到对应式神")
                     .build(JsonBody.NOT_FOUND);
-        List<QueryService.QueryResult> queryResultList = queryService.queryChapter(character);
+        List<QueryService.QueryResult> queryResultList = queryService.queryCharacterLocation(character);
         return JsonBody.builder()
                 .append("character", character)
                 .append("queryResultList", queryResultList)

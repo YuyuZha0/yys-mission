@@ -29,7 +29,8 @@ import java.util.stream.Collectors;
  */
 public final class CharacterXmlGenerator {
 
-    private static final String DEST_URL = "http://news.4399.com/yyssy/shishenlu";
+    private static final String DEST_URL1 = "http://news.4399.com/yyssy/shishenlu";
+    private static final String DEST_URL2 = "http://www.87g.com/yys/38101.html";
 
     private static final Logger logger = LoggerFactory.getLogger(CharacterXmlGenerator.class);
 
@@ -40,9 +41,18 @@ public final class CharacterXmlGenerator {
     public static void generate(String filePath, String imgDir) throws IOException {
         Document document = DocumentHelper.createDocument();
         org.dom4j.Element root = document.addElement("characters");
+        Map<String, Map<String, String>> map1 = getFromUrl1()
+                .stream().collect(Collectors.toMap(map -> map.get("name"), map -> map));
+        Map<String, Map<String, String>> map2 = getFromUrl2()
+                .stream().collect(Collectors.toMap(map -> map.get("name"), map -> map));
+        for (Map.Entry<String, Map<String, String>> entry : map2.entrySet()) {
+            if (map1.get(entry.getKey()) != null)
+                continue;
+            map1.put(entry.getKey(), entry.getValue());
+        }
         final ExecutorService executorService = Executors.newCachedThreadPool();
         final Set<String> nameSet = new HashSet<>();
-        for (Map<String, String> map : getInfoFromWeb()) {
+        for (Map<String, String> map : map1.values()) {
             String name = map.get("name");
             nameSet.add(name);
             String quality = map.get("quality");
@@ -66,22 +76,26 @@ public final class CharacterXmlGenerator {
         writer.close();
     }
 
-    private static Set<Map<String, String>> getInfoFromWeb() throws IOException {
-        return Jsoup.connect(DEST_URL)
-                .timeout(10 * 1000)
-                .get()
-                .select("body > div.area.wp.mt10.slide_wp > ul > li")
-                .stream()
-                .map(CharacterXmlGenerator::parseElement)
-                .collect(Collectors.toSet());
-    }
 
     public static void main(String[] args) throws IOException {
         generate("D:\\temp\\characters.xml", "D:\\temp\\character_images");
     }
 
-    private static Map<String, String> parseElement(final org.jsoup.nodes.Element element) {
+    private static Set<Map<String, String>> getFromUrl1() throws IOException {
+        return Jsoup.connect(DEST_URL1)
+                .timeout(10 * 1000)
+                .get()
+                .select("body > div.area.wp.mt10.slide_wp > ul > li")
+                .stream()
+                .map(CharacterXmlGenerator::parseElement1)
+                .filter(map -> map != null)
+                .collect(Collectors.toSet());
+    }
+
+    private static Map<String, String> parseElement1(final org.jsoup.nodes.Element element) {
         String name = element.text().trim();
+        if (name.isEmpty())
+            return null;
         String url = element.select("a").attr("href");
         String quality = FastStrings.split(url, '/')[4];
         Elements img = element.select("img");
@@ -94,15 +108,38 @@ public final class CharacterXmlGenerator {
         );
     }
 
+    private static Set<Map<String, String>> getFromUrl2() throws IOException {
+        return Jsoup.connect(DEST_URL2)
+                .timeout(10 * 1000)
+                .get()
+                .select("#pic")
+                .stream()
+                .map(CharacterXmlGenerator::parseElement2)
+                .filter(map -> map != null)
+                .collect(Collectors.toSet());
+    }
+
+    private static Map<String, String> parseElement2(final org.jsoup.nodes.Element element) {
+        String name = element.attr("alt").trim();
+        if (name.isEmpty() || "廉鼬".equals(name) || "莹草".equals(name) || "青灯行".equals(name))
+            return null;
+        String imgsrc = element.attr("src");
+        return ImmutableMap.of("name", name,
+                "imgsrc", imgsrc,
+                "quality", "n"
+        );
+    }
+
     private static void asyncDownloadImage(final String fileName, final String url, final String dir, final ExecutorService service) {
 
+        String format = url.substring(url.lastIndexOf('.') + 1, url.length());
         service.submit(() -> {
             try {
                 BufferedImage image = ImageIO.read(new URL(url));
-                File file = new File(dir + File.separator + fileName);
+                File file = new File(dir + File.separator + fileName + "." + format);
                 if (file.exists())
                     file.delete();
-                ImageIO.write(image, "jpg", file);
+                ImageIO.write(image, format, file);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -113,7 +150,7 @@ public final class CharacterXmlGenerator {
         return Hashing.md5().newHasher()
                 .putString(name, Charsets.UTF_8)
                 .hash()
-                .toString() + ".jpg";
+                .toString();
     }
 
     private static void addTips(final org.dom4j.Element root, Set<String> nameSet) {

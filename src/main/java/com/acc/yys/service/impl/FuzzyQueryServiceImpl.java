@@ -100,7 +100,19 @@ public final class FuzzyQueryServiceImpl implements FuzzyQueryService {
 
     @Override
     public Character queryCharacter(String characterName) {
-        return null;
+        if (characterName == null || characterName.isEmpty())
+            return null;
+        Character character = characterMap.get(characterName);
+        if (character != null)
+            return character;
+        String tip = tipsMap.get(characterName);
+        if (tip != null) {
+            return characterMap.get(tip);
+        }
+        List<String> guess = guessRealMeaning(characterName, 1);
+        if (guess.isEmpty())
+            return null;
+        return queryCharacter(guess.get(0));
     }
 
     private static List<String> getRankedNameList(String query, List<QueryIndex> indices) {
@@ -125,7 +137,7 @@ public final class FuzzyQueryServiceImpl implements FuzzyQueryService {
     }
 
     private static boolean isAllEnglishLetter(String query) {
-        return CharMatcher.javaLetter().matchesAllOf(query);
+        return CharMatcher.ascii().matchesAllOf(query);
     }
 
     private static boolean isShortPinyinPattern(String query) {
@@ -174,9 +186,10 @@ public final class FuzzyQueryServiceImpl implements FuzzyQueryService {
             this.score = score;
         }
 
-
         @Override
         public int compareTo(QueryScore o) {
+            if (o.score == score)
+                return o.realName.compareTo(realName);
             return Floats.compare(o.score, score);
         }
     }
@@ -194,6 +207,6 @@ public final class FuzzyQueryServiceImpl implements FuzzyQueryService {
 
     public static void main(String[] args) {
         FuzzyQueryServiceImpl service = new FuzzyQueryServiceImpl();
-        System.out.println(service.guessRealMeaning("txg", -1));
+        System.out.println(service.guessRealMeaning("红", -1));
     }
 }
