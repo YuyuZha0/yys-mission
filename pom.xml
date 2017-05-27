@@ -128,7 +128,7 @@
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson2.version}</version>
         </dependency>
-        <!--<dependency>
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
@@ -137,7 +137,7 @@
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>1.0.27</version>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>

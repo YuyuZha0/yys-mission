@@ -3,6 +3,7 @@ package com.acc.yys.controller;
 import com.acc.yys.pojo.Character;
 import com.acc.yys.pojo.JsonBody;
 import com.acc.yys.service.FuzzyQueryService;
+import com.acc.yys.service.MessageService;
 import com.acc.yys.service.QueryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -23,6 +25,8 @@ public final class ApiController {
     private FuzzyQueryService fuzzyQueryService;
     @Autowired
     private QueryService queryService;
+    @Autowired
+    private MessageService messageService;
 
     @RequestMapping("getAutoComplement")
     public JsonBody getAutoComplement(@RequestParam String query,
@@ -33,7 +37,7 @@ public final class ApiController {
                 .build(JsonBody.OK);
     }
 
-    @RequestMapping("getChapterList")
+    @RequestMapping("getQueryResult")
     public JsonBody getChapterList(@RequestParam String query) {
         Character character = fuzzyQueryService.queryCharacter(query);
         if (character == null)
@@ -41,10 +45,21 @@ public final class ApiController {
                     .msg("未查找到对应式神")
                     .build(JsonBody.NOT_FOUND);
         List<QueryService.QueryResult> queryResultList = queryService.queryCharacterLocation(character);
+        if (queryResultList == null || queryResultList.isEmpty())
+            return JsonBody.builder()
+                    .msg("未查找到对应章节")
+                    .build(JsonBody.NOT_FOUND);
         return JsonBody.builder()
                 .append("character", character)
                 .append("queryResultList", queryResultList)
                 .msg("查询成功")
                 .build(JsonBody.OK);
+    }
+
+    @RequestMapping("leaveMsg")
+    public JsonBody leaveMsg(@RequestParam(required = false) String name,
+                             @RequestParam(required = false) String email,
+                             @RequestParam String msg, HttpServletRequest request) {
+        return messageService.leaveMsg(name, email, msg, request);
     }
 }

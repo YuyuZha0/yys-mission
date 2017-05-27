@@ -29,6 +29,6 @@ public final class GlobalExceptionHandler {
                     .builder()
                     .msg(e.getMessage())
                     .build(JsonBody.SERVER_ERROR);
-        return "<html><body><h1>500:Server Error!<h1></body></html>";
+        return String.format("<html><body><h1>%s<h1></body></html>", e.getMessage());
     }
 }

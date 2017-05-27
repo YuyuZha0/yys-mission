@@ -8,8 +8,6 @@
 			http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 			http://www.springframework.org/schema/context
 			http://www.springframework.org/schema/context/spring-context-3.0.xsd
-
-
 			http://www.springframework.org/schema/mvc
 			http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
 			http://www.springframework.org/schema/context
@@ -95,21 +93,7 @@
     <mvc:resources mapping="/images/**"
                    location="/images/"
                    cache-period="2592000"/>
-    <mvc:resources mapping="/js/**"
-                   location="/js/"
-                   cache-period="2592000"/>
-    <mvc:resources mapping="/fonts/**"
-                   location="/fonts/"
-                   cache-period="2592000"/>
     <mvc:resources mapping="/favicon.ico"
                    location="/favicon.ico"
                    cache-period="2592000"/>
-
-    <!--<mvc:interceptors>
-        <bean class="com.ifeng.dmp.web.interceptor.AuthInterceptor">
-            <constructor-arg index="0">
-                <value>${whitelist}</value>
-            </constructor-arg>
-        </bean>
-    </mvc:interceptors>-->
 </beans>

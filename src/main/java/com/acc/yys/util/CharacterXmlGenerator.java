@@ -60,7 +60,7 @@ public final class CharacterXmlGenerator {
             org.dom4j.Element character = root.addElement("character");
             character.addAttribute("name", name);
             character.addAttribute("quality", quality);
-            String imageName = getImageName(name);
+            String imageName = getImageName(name, imgsrc);
             asyncDownloadImage(imageName, imgsrc, imgDir, executorService);
             character.addAttribute("image-name", imageName);
         }
@@ -131,12 +131,11 @@ public final class CharacterXmlGenerator {
     }
 
     private static void asyncDownloadImage(final String fileName, final String url, final String dir, final ExecutorService service) {
-
-        String format = url.substring(url.lastIndexOf('.') + 1, url.length());
+        String format = fileName.substring(fileName.lastIndexOf('.') + 1, fileName.length());
         service.submit(() -> {
             try {
                 BufferedImage image = ImageIO.read(new URL(url));
-                File file = new File(dir + File.separator + fileName + "." + format);
+                File file = new File(dir + File.separator + fileName);
                 if (file.exists())
                     file.delete();
                 ImageIO.write(image, format, file);
@@ -146,11 +145,12 @@ public final class CharacterXmlGenerator {
         });
     }
 
-    private static String getImageName(String name) {
+    private static String getImageName(String name, String url) {
+        String format = url.substring(url.lastIndexOf('.') + 1, url.length());
         return Hashing.md5().newHasher()
                 .putString(name, Charsets.UTF_8)
                 .hash()
-                .toString();
+                .toString() + "." + format;
     }
 
     private static void addTips(final org.dom4j.Element root, Set<String> nameSet) {

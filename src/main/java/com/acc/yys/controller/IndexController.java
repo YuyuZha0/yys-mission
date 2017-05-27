@@ -36,7 +36,7 @@ public final class IndexController {
     private volatile SimpleTemplate template = null;
 
     @ResponseBody
-    @RequestMapping("/index")
+    @RequestMapping(value = "/index", produces = "text/html;charset=utf-8")
     public String welcome2Index(HttpServletRequest request) {
         String ip = HttpRequestUtils.getRequestIp(request);
         logger.info("record access from [{}] on [{}]", ip, LocalDateTime.now().toString());

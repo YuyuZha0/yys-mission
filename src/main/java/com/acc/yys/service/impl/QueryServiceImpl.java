@@ -69,8 +69,11 @@ public final class QueryServiceImpl implements QueryService {
                         ++roundCount;
                         Element round = rounds.next();
                         String roundName = round.attributeValue("name");
+                        boolean hardMode = "true".equalsIgnoreCase(round.attributeValue("hard-mode"));
                         if (roundName == null || roundName.isEmpty())
                             roundName = String.format("第%s回合", roundCount);
+                        if (hardMode)
+                            roundName += "(困难模式)";
                         Iterator<Element> characters = round.elementIterator("character");
                         //System.out.println("\t\t" + roundName);
                         while (characters.hasNext()) {
@@ -103,6 +106,6 @@ public final class QueryServiceImpl implements QueryService {
     public List<QueryResult> queryCharacterLocation(Character character) {
         return cache.get(character.getName());
     }
-    
+
 
 }
