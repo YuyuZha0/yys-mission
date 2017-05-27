@@ -31,8 +31,8 @@ h3{color: #333;margin-bottom: 20px;font-size: 2em;}
 .form-control{border:none;border-radius: 0;height: 41px;}
 .form-inline .form-control{width: 300px;}
 
-.ab-wrap{height: 100%;width: 100%;}
-.ab-center{width: 50%;height: 50%; margin: auto;position: absolute;top: 0; left: 0; bottom: 0; right: 0; vertical-align: middle;text-align: center;}
+.ab-wrap{ display: flex; height: 100%; width: 100%;}
+.ab-center{margin: auto;  position: relative; vertical-align: middle;text-align: center;}
 .spacer{padding: 5em 0 0 0;}
 
 /*intro*/
