@@ -37,6 +37,7 @@ public final class QueryServiceImpl implements QueryService {
                         .map(entry -> new AbstractMap.SimpleEntry<>(entry.getKey(), mapAndSort(entry.getValue())))
                         .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
         );
+        logger.info("query cache init successfully with final size[{}].", cache.size());
     }
 
     @SuppressWarnings("unchecked")

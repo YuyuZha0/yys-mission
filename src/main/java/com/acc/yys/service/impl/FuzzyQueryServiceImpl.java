@@ -84,8 +84,11 @@ public final class FuzzyQueryServiceImpl implements FuzzyQueryService {
             logger.error(e.getMessage(), e);
         }
         this.indices = ImmutableList.copyOf(indices);
+        logger.info("create indices on [{}] vocabs.", this.indices.size());
         this.tipsMap = ImmutableMap.copyOf(tipsMap);
+        logger.info("find [{}] tips.", tipsMap.size());
         this.characterMap = ImmutableMap.copyOf(characterMap);
+        logger.info("find [{}] character map.");
     }
 
     @Override

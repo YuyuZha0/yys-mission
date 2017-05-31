@@ -75,4 +75,9 @@ public final class IndexController {
         }
         return new SimpleTemplate("");
     }
+
+    @RequestMapping("/")
+    public String redirect() {
+        return "redirect:/index";
+    }
 }

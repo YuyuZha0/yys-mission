@@ -5,6 +5,8 @@ import com.acc.yys.pojo.JsonBody;
 import com.acc.yys.service.FuzzyQueryService;
 import com.acc.yys.service.MessageService;
 import com.acc.yys.service.QueryService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +22,8 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/api", method = RequestMethod.POST)
 public final class ApiController {
+
+    private static final Logger logger = LoggerFactory.getLogger(ApiController.class);
 
     @Autowired
     private FuzzyQueryService fuzzyQueryService;
@@ -49,6 +53,7 @@ public final class ApiController {
             return JsonBody.builder()
                     .msg("未查找到对应章节")
                     .build(JsonBody.NOT_FOUND);
+        logger.info("execute query for [{}] and resolved as [{}]", query, character.getName());
         return JsonBody.builder()
                 .append("character", character)
                 .append("queryResultList", queryResultList)
