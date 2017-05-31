@@ -59,7 +59,7 @@
 
     const renderQueryResult = function (character, queryResultList) {
         console.assert($.isPlainObject(character) && $.isArray(queryResultList));
-        $resultName.text(`查询结果&#58;<strong>${character.name}</strong>`);
+        $resultName.html(`查询结果&#58;<strong>${character.name}</strong>`);
         const img = `<a href="javascript:;" title="${character.name}">
                      <img src="${ctx}/images/characters/${character.imageName}" class="img-responsive wowload fadeInUp" alt="${character.name}"></a>`;
         $resultImage.html(img);
