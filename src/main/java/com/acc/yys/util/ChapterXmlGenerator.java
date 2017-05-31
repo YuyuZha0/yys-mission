@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 public final class ChapterXmlGenerator {
     private static final Pattern wordPtn = Pattern.compile("[^\u4e00-\u9fa5\\d]+");
     private static final Pattern countPtn = Pattern.compile("[\u4e00-\u9fa5]+×\\d+");
-    private static final Pattern prefixPtn = Pattern.compile("[\u4e00-\u9fa5：·]+\\d?");
+    private static final Pattern prefixPtn = Pattern.compile("[\u4e00-\u9fa5：·（）]+\\d?");
     private static final char mul = '×';
 
     private ChapterXmlGenerator() {
@@ -45,7 +45,7 @@ public final class ChapterXmlGenerator {
     }
 
     public static void main(String[] args) throws IOException {
-
+        generate("D:\\temp\\chapters.xml");
     }
 
     private static void writeFormattedXml(final Document document, final Writer writer) {

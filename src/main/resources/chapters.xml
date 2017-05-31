@@ -1236,6 +1236,306 @@
       </round>
     </battle>
   </chapter>
+  <chapter title="第十九章" sub-title="八岐大蛇的复活">
+    <battle name="清姬1">
+      <round>
+        <character name="清姬" count="3"/>
+        <character name="络新妇" count="2"/>
+        <character name="二口女" count="1"/>
+      </round>
+    </battle>
+    <battle name="络新妇1">
+      <round>
+        <character name="络新妇" count="3"/>
+        <character name="清姬" count="3"/>
+      </round>
+    </battle>
+    <battle name="二口女1">
+      <round>
+        <character name="二口女" count="1"/>
+        <character name="络新妇" count="4"/>
+      </round>
+    </battle>
+    <battle name="清姬2">
+      <round>
+        <character name="清姬" count="1"/>
+        <character name="二口女" count="3"/>
+      </round>
+    </battle>
+    <battle name="二口女2">
+      <round>
+        <character name="二口女" count="4"/>
+      </round>
+    </battle>
+    <battle name="络新妇2">
+      <round>
+        <character name="络新妇" count="2"/>
+        <character name="清姬" count="2"/>
+      </round>
+    </battle>
+    <battle name="二口女3">
+      <round>
+        <character name="二口女" count="3"/>
+        <character name="络新妇" count="2"/>
+        <character name="古笼火" count="1"/>
+      </round>
+    </battle>
+    <battle name="首领：八百比丘尼" boss="true">
+      <round>
+        <character name="暗孔雀" count="2"/>
+        <character name="清姬" count="2"/>
+        <character name="二口女" count="1"/>
+      </round>
+    </battle>
+  </chapter>
+  <chapter title="第二十章" sub-title="赌上性命的仪式">
+    <battle name="般若1">
+      <round>
+        <character name="般若" count="4"/>
+      </round>
+    </battle>
+    <battle name="般若2">
+      <round>
+        <character name="古笼火" count="3"/>
+        <character name="般若" count="1"/>
+      </round>
+      <round>
+        <character name="凤凰火" count="1"/>
+      </round>
+    </battle>
+    <battle name="般若3">
+      <round>
+        <character name="古笼火" count="3"/>
+        <character name="清姬" count="2"/>
+        <character name="般若" count="1"/>
+      </round>
+    </battle>
+    <battle name="古笼火1">
+      <round>
+        <character name="清姬" count="1"/>
+        <character name="二口女" count="2"/>
+        <character name="古笼火" count="1"/>
+      </round>
+    </battle>
+    <battle name="古笼火2">
+      <round>
+        <character name="般若" count="4"/>
+        <character name="二口女" count="1"/>
+        <character name="古笼火" count="1"/>
+      </round>
+    </battle>
+    <battle name="清姬1">
+      <round>
+        <character name="般若" count="3"/>
+        <character name="清姬" count="1"/>
+      </round>
+    </battle>
+    <battle name="清姬2">
+      <round>
+        <character name="古笼火" count="5"/>
+        <character name="清姬" count="1"/>
+      </round>
+    </battle>
+    <battle name="首领：妖刀姬" boss="true">
+      <round>
+        <character name="妖刀姬" count="1"/>
+        <character name="般若" count="2"/>
+        <character name="二口女" count="1"/>
+        <character name="古笼火" count="2"/>
+      </round>
+    </battle>
+  </chapter>
+  <chapter title="第二十一章" sub-title="七角山秘闻">
+    <battle name="烟烟罗1">
+      <round>
+        <character name="武士之灵" count="3"/>
+        <character name="烟烟罗" count="1"/>
+      </round>
+    </battle>
+    <battle name="食发鬼1">
+      <round>
+        <character name="丑时之女" count="3"/>
+        <character name="食发鬼" count="1"/>
+      </round>
+    </battle>
+    <battle name="烟烟罗2">
+      <round>
+        <character name="武士之灵" count="2"/>
+        <character name="兵佣" count="1"/>
+        <character name="烟烟罗" count="1"/>
+      </round>
+    </battle>
+    <battle name="食发鬼2">
+      <round>
+        <character name="丑时之女" count="2"/>
+        <character name="兵佣" count="1"/>
+        <character name="食发鬼" count="1"/>
+      </round>
+    </battle>
+    <battle name="吸血姬1">
+      <round>
+        <character name="跳跳弟弟" count="3"/>
+        <character name="吸血姬" count="1"/>
+      </round>
+      <round>
+        <character name="夜叉" count="1"/>
+      </round>
+    </battle>
+    <battle name="食发鬼3">
+      <round>
+        <character name="丑时之女" count="2"/>
+        <character name="兵佣" count="1"/>
+        <character name="食发鬼" count="1"/>
+      </round>
+    </battle>
+    <battle name="吸血姬2">
+      <round>
+        <character name="跳跳弟弟" count="2"/>
+        <character name="武士之灵" count="1"/>
+        <character name="吸血姬" count="1"/>
+      </round>
+      <round>
+        <character name="夜叉" count="1"/>
+      </round>
+    </battle>
+    <battle name="首领：莹草" boss="true">
+      <round>
+        <character name="莹草" count="1"/>
+        <character name="烟烟罗" count="2"/>
+        <character name="吸血姬" count="1"/>
+      </round>
+      <round>
+        <character name="莹草" count="1"/>
+        <character name="烟烟罗" count="2"/>
+        <character name="吸血姬" count="1"/>
+      </round>
+    </battle>
+  </chapter>
+  <chapter title="第二十二章" sub-title="八岐大蛇的阴谋">
+    <battle name="络新妇1">
+      <round>
+        <character name="络新妇" count="1"/>
+        <character name="烟烟罗" count="2"/>
+        <character name="般若" count="1"/>
+      </round>
+    </battle>
+    <battle name="二口女1">
+      <round>
+        <character name="二口女" count="3"/>
+        <character name="烟烟罗" count="1"/>
+      </round>
+      <round>
+        <character name="络新妇" count="1"/>
+      </round>
+    </battle>
+    <battle name="青坊主1">
+      <round>
+        <character name="二口女" count="2"/>
+        <character name="青坊主" count="1"/>
+        <character name="烟烟罗" count="1"/>
+      </round>
+    </battle>
+    <battle name="络新妇2">
+      <round>
+        <character name="烟烟罗" count="2"/>
+        <character name="络新妇" count="1"/>
+        <character name="二口女" count="1"/>
+      </round>
+    </battle>
+    <battle name="二口女2">
+      <round>
+        <character name="二口女" count="2"/>
+        <character name="烟烟罗" count="2"/>
+      </round>
+      <round>
+        <character name="青坊主" count="1"/>
+      </round>
+    </battle>
+    <battle name="青坊主2">
+      <round>
+        <character name="般若" count="3"/>
+        <character name="青坊主" count="1"/>
+      </round>
+    </battle>
+    <battle name="络新妇3">
+      <round>
+        <character name="二口女" count="3"/>
+        <character name="络新妇" count="1"/>
+      </round>
+      <round>
+        <character name="夜叉" count="1"/>
+      </round>
+    </battle>
+    <battle name="首领：络新妇" boss="true">
+      <round>
+        <character name="酒吞童子" count="1"/>
+        <character name="二口女" count="2"/>
+        <character name="般若" count="1"/>
+      </round>
+      <round>
+        <character name="络新妇" count="1"/>
+        <character name="椒图" count="1"/>
+        <character name="惠比寿" count="1"/>
+        <character name="吸血姬" count="1"/>
+      </round>
+    </battle>
+  </chapter>
+  <chapter title="第二十三章" sub-title="沉睡的傀儡师">
+    <battle name="孟婆1">
+      <round>
+        <character name="山兔" count="3"/>
+        <character name="孟婆" count="1"/>
+      </round>
+    </battle>
+    <battle name="盗墓小鬼1">
+      <round>
+        <character name="座敷童子" count="2"/>
+        <character name="河童" count="1"/>
+        <character name="盗墓小鬼" count="1"/>
+      </round>
+    </battle>
+    <battle name="孟婆2">
+      <round>
+        <character name="山兔" count="3"/>
+        <character name="孟婆" count="1"/>
+      </round>
+    </battle>
+    <battle name="骨女1">
+      <round>
+        <character name="赤舌" count="3"/>
+        <character name="骨女" count="1"/>
+      </round>
+    </battle>
+    <battle name="盗墓小鬼2">
+      <round>
+        <character name="座敷童子" count="2"/>
+        <character name="河童" count="1"/>
+        <character name="盗墓小鬼" count="1"/>
+      </round>
+    </battle>
+    <battle name="孟婆3">
+      <round>
+        <character name="山兔" count="3"/>
+        <character name="孟婆" count="1"/>
+      </round>
+    </battle>
+    <battle name="骨女2">
+      <round>
+        <character name="赤舌" count="3"/>
+        <character name="骨女" count="1"/>
+      </round>
+    </battle>
+    <battle name="首领：傀儡师" boss="true">
+      <round>
+        <character name="盗墓小鬼" count="3"/>
+        <character name="傀儡师" count="1"/>
+      </round>
+      <round>
+        <character name="萤草" count="3"/>
+        <character name="傀儡师" count="1"/>
+      </round>
+    </battle>
+  </chapter>
   <chapter title="御魂副本">
     <battle name="第一层">
       <round name="一回合">
@@ -2024,6 +2324,442 @@
         <character name="椒图" count="1"/>
         <character name="妖狐" count="1"/>
         <character name="花鸟卷" count="1"/>
+      </round>
+    </battle>
+  </chapter>
+  <chapter title="雨女的等候">
+    <battle name="第一层">
+      <round name="第一回合">
+        <character name="盗墓小鬼" count="3"/>
+        <character name="唐纸伞妖" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="提灯小僧" count="3"/>
+        <character name="盗墓小鬼" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="座敷童子" count="3"/>
+        <character name="雨女" count="1"/>
+      </round>
+    </battle>
+    <battle name="第二层">
+      <round name="第一回合">
+        <character name="盗墓小鬼" count="3"/>
+        <character name="唐纸伞妖" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="提灯小僧" count="3"/>
+        <character name="盗墓小鬼" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="首无" count="3"/>
+        <character name="雨女" count="1"/>
+      </round>
+    </battle>
+    <battle name="第三层">
+      <round name="第一回合">
+        <character name="盗墓小鬼" count="3"/>
+        <character name="唐纸伞妖" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="九命猫" count="3"/>
+        <character name="铁鼠" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="无视之灵" count="3"/>
+        <character name="雨女" count="1"/>
+      </round>
+    </battle>
+    <battle name="第四层">
+      <round name="第一回合">
+        <character name="唐纸伞妖" count="3"/>
+        <character name="赤舌" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="觉" count="3"/>
+        <character name="丑时之女" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="骨女" count="4"/>
+        <character name="雨女" count="1"/>
+      </round>
+    </battle>
+    <battle name="第五层">
+      <round name="第一回合">
+        <character name="唐纸伞妖" count="3"/>
+        <character name="赤舌" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="觉" count="3"/>
+        <character name="丑时之女" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="烟烟罗" count="4"/>
+        <character name="雨女" count="1"/>
+      </round>
+    </battle>
+    <battle name="第六层">
+      <round name="第一回合">
+        <character name="唐纸伞妖" count="3"/>
+        <character name="赤舌" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="觉" count="3"/>
+        <character name="丑时之女" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="夜叉" count="4"/>
+        <character name="雨女" count="1"/>
+      </round>
+    </battle>
+    <battle name="第七层">
+      <round name="第一回合">
+        <character name="巫蛊师" count="1"/>
+        <character name="鸦天狗" count="3"/>
+      </round>
+      <round name="第二回合">
+        <character name="三尾狐" count="1"/>
+        <character name="莹草" count="2"/>
+        <character name="蝴蝶精" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="兵佣" count="4"/>
+      </round>
+    </battle>
+    <battle name="第八层">
+      <round name="第一回合">
+        <character name="巫蛊师" count="1"/>
+        <character name="鸦天狗" count="3"/>
+      </round>
+      <round name="第二回合">
+        <character name="跳跳弟弟" count="4"/>
+        <character name="椒图" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="河童" count="6"/>
+        <character name="雨女" count="1"/>
+      </round>
+    </battle>
+    <battle name="第九层">
+      <round name="第一回合">
+        <character name="巫蛊师" count="1"/>
+        <character name="鸦天狗" count="3"/>
+      </round>
+      <round name="第二回合">
+        <character name="鬼使白" count="2"/>
+        <character name="清姬" count="2"/>
+        <character name="判官" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="管狐" count="5"/>
+        <character name="雨女" count="1"/>
+      </round>
+    </battle>
+    <battle name="第十层">
+      <round name="第一回合">
+        <character name="巫蛊师" count="1"/>
+        <character name="鸦天狗" count="3"/>
+      </round>
+      <round name="第二回合">
+        <character name="吸血姬" count="5"/>
+        <character name="童男" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="青蛙瓷器" count="5"/>
+        <character name="雨女" count="1"/>
+      </round>
+    </battle>
+  </chapter>
+  <chapter title="荒川之怒">
+    <battle name="第一层">
+      <round name="第一回合">
+        <character name="灯笼鬼" count="3"/>
+        <character name="赤舌" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="寄生魂" count="3"/>
+        <character name="武士之灵" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="盗墓小鬼" count="3"/>
+        <character name="荒川之主" count="1"/>
+      </round>
+    </battle>
+    <battle name="第二层">
+      <round name="第一回合">
+        <character name="灯笼鬼" count="3"/>
+        <character name="赤舌" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="寄生魂" count="3"/>
+        <character name="武士之灵" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="童女" count="3"/>
+        <character name="荒川之主" count="1"/>
+      </round>
+    </battle>
+    <battle name="第三层">
+      <round name="第一回合">
+        <character name="灯笼鬼" count="3"/>
+        <character name="赤舌" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="寄生魂" count="3"/>
+        <character name="武士之灵" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="管狐" count="3"/>
+        <character name="荒川之主" count="1"/>
+      </round>
+    </battle>
+    <battle name="第四层">
+      <round name="第一回合">
+        <character name="河童" count="3"/>
+        <character name="鲤鱼精" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="蝴蝶精" count="3"/>
+        <character name="海坊主" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="鸦天狗" count="4"/>
+        <character name="荒川之主" count="1"/>
+      </round>
+    </battle>
+    <battle name="第五层">
+      <round name="第一回合">
+        <character name="河童" count="3"/>
+        <character name="鲤鱼精" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="蝴蝶精" count="3"/>
+        <character name="海坊主" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="山兔" count="4"/>
+        <character name="荒川之主" count="1"/>
+      </round>
+    </battle>
+    <battle name="第六层">
+      <round name="第一回合">
+        <character name="河童" count="3"/>
+        <character name="鲤鱼精" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="蝴蝶精" count="3"/>
+        <character name="海坊主" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="雪女" count="4"/>
+        <character name="荒川之主" count="1"/>
+      </round>
+    </battle>
+    <battle name="第七层">
+      <round name="第一回合">
+        <character name="古笼火" count="3"/>
+        <character name="金鱼姬" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="夜叉" count="4"/>
+        <character name="椒图" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="清姬" count="4"/>
+        <character name="荒川之主" count="1"/>
+      </round>
+    </battle>
+    <battle name="第八层">
+      <round name="第一回合">
+        <character name="古笼火" count="3"/>
+        <character name="金鱼姬" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="夜叉" count="4"/>
+        <character name="惠比寿" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="海坊主" count="5"/>
+        <character name="荒川之主" count="1"/>
+      </round>
+    </battle>
+    <battle name="第九层">
+      <round name="第一回合">
+        <character name="古笼火" count="4"/>
+        <character name="金鱼姬" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="荒川之主" count="1"/>
+        <character name="烟烟罗" count="2"/>
+        <character name="夜叉" count="2"/>
+      </round>
+      <round name="第三回合">
+        <character name="章鱼" count="1"/>
+      </round>
+    </battle>
+    <battle name="第十层">
+      <round name="第一回合">
+        <character name="古笼火" count="5"/>
+        <character name="金鱼姬" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="夜叉" count="4"/>
+        <character name="大天狗" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="荒川之主" count="1"/>
+        <character name="桃花妖" count="1"/>
+        <character name="雪女" count="1"/>
+        <character name="青行灯" count="1"/>
+        <character name="姑获鸟" count="1"/>
+        <character name="惠比寿" count="1"/>
+      </round>
+    </battle>
+  </chapter>
+  <chapter title="暴风之巅">
+    <battle name="第一层">
+      <round name="第一回合">
+        <character name="灯笼鬼" count="3"/>
+        <character name="赤舌" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="寄生魂" count="3"/>
+        <character name="武士之灵" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="盗墓小鬼" count="3"/>
+        <character name="大天狗" count="1"/>
+      </round>
+    </battle>
+    <battle name="第二层">
+      <round name="第一回合">
+        <character name="灯笼鬼" count="3"/>
+        <character name="赤舌" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="寄生魂" count="3"/>
+        <character name="武士之灵" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="童女" count="3"/>
+        <character name="大天狗" count="1"/>
+      </round>
+    </battle>
+    <battle name="第三层">
+      <round name="第一回合">
+        <character name="灯笼鬼" count="3"/>
+        <character name="赤舌" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="寄生魂" count="3"/>
+        <character name="武士之灵" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="管狐" count="3"/>
+        <character name="大天狗" count="1"/>
+      </round>
+    </battle>
+    <battle name="第四层">
+      <round name="第一回合">
+        <character name="河童" count="3"/>
+        <character name="鲤鱼精" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="蝴蝶精" count="3"/>
+        <character name="海坊主" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="鸦天狗" count="4"/>
+        <character name="大天狗" count="1"/>
+      </round>
+    </battle>
+    <battle name="第五层">
+      <round name="第一回合">
+        <character name="河童" count="3"/>
+        <character name="鲤鱼精" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="蝴蝶精" count="3"/>
+        <character name="海坊主" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="山兔" count="4"/>
+        <character name="大天狗" count="1"/>
+      </round>
+    </battle>
+    <battle name="第六层">
+      <round name="第一回合">
+        <character name="河童" count="3"/>
+        <character name="鲤鱼精" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="蝴蝶精" count="3"/>
+        <character name="海坊主" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="雪女" count="4"/>
+        <character name="大天狗" count="1"/>
+      </round>
+    </battle>
+    <battle name="第七层">
+      <round name="第一回合">
+        <character name="古笼火" count="3"/>
+        <character name="金鱼姬" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="夜叉" count="4"/>
+        <character name="椒图" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="清姬" count="4"/>
+        <character name="大天狗" count="1"/>
+      </round>
+    </battle>
+    <battle name="第八层">
+      <round name="第一回合">
+        <character name="帚神" count="3"/>
+        <character name="童男" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="妖狐" count="5"/>
+        <character name="大天狗" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="桃花妖" count="4"/>
+        <character name="桃花妖" count="1"/>
+        <character name="大天狗" count="1"/>
+      </round>
+    </battle>
+    <battle name="第九层">
+      <round name="第一回合">
+        <character name="帚神" count="3"/>
+        <character name="童男" count="1"/>
+      </round>
+      <round name="第二回合">
+        <character name="大天狗" count="1"/>
+        <character name="三尾狐" count="1"/>
+        <character name="酒吞童子" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="黑晴明" count="1"/>
+        <character name="雪女" count="1"/>
+        <character name="大天狗" count="1"/>
+      </round>
+    </battle>
+    <battle name="第十层">
+      <round name="第一回合">
+        <character name="武士之灵" count="1"/>
+        <character name="帚神" count="3"/>
+      </round>
+      <round name="第二回合">
+        <character name="吸血姬" count="4"/>
+        <character name="吸血姬" count="1"/>
+        <character name="椒图" count="1"/>
+      </round>
+      <round name="第三回合">
+        <character name="大天狗" count="1"/>
+        <character name="黑晴明" count="1"/>
+        <character name="雪女" count="1"/>
       </round>
     </battle>
   </chapter>
