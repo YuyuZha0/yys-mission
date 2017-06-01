@@ -5,6 +5,4 @@ out
 src/main/resources/config.properties
 src/main/resources/characters.xml
 src/mian/resources/chapters.xml
-src/main/webapp/images
-src/main/webapp/character_images
 
