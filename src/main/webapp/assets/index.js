@@ -17,6 +17,15 @@
     const $resultImage = $('#character-image-div');
     const $resultDiv = $('#result-div');
 
+   /* $(document).ready(function () {
+        if ($(window).width() > 480) {
+            $('#carousel-about').find('img').each(function () {
+                const fullSrc = $(this).attr('data-fullsrc');
+                $(this).attr('src', fullSrc);
+            });
+        }
+    });*/
+
     $queryInput.typeahead({
         source: function (query, process) {
             $.ajax({

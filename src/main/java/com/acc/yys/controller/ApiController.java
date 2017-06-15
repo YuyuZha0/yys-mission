@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 /**
@@ -53,7 +54,8 @@ public final class ApiController {
             return JsonBody.builder()
                     .msg("未查找到对应章节")
                     .build(JsonBody.NOT_FOUND);
-        logger.info("execute query for [{}] and resolved as [{}]", query, character.getName());
+        logger.info("execute query for [{}] and resolved as [{}]", encodingToISO_8851_1(query),
+                encodingToISO_8851_1(character.getName()));
         return JsonBody.builder()
                 .append("character", character)
                 .append("queryResultList", queryResultList)
@@ -66,5 +68,11 @@ public final class ApiController {
                              @RequestParam(required = false) String email,
                              @RequestParam String msg, HttpServletRequest request) {
         return messageService.leaveMsg(name, email, msg, request);
+    }
+
+    private static String encodingToISO_8851_1(String s) {
+        if (s == null || s.isEmpty())
+            return s;
+        return new String(s.getBytes(), StandardCharsets.ISO_8859_1);
     }
 }

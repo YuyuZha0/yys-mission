@@ -18,7 +18,7 @@ public final class GlobalExceptionHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(RuntimeException.class)
     public
     @ResponseBody
     Object handleException(HttpServletRequest request, Exception e) {
