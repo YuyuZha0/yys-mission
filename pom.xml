@@ -4,7 +4,7 @@
     <groupId>com.acc</groupId>
     <artifactId>yys</artifactId>
     <packaging>war</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1-SNAPSHOT</version>
     <name>yys Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <properties>
@@ -12,10 +12,11 @@
         <java.version>1.8</java.version>
         <slf4j.version>1.7.12</slf4j.version>
         <logback.version>1.2.3</logback.version>
-        <org.springframework.version>4.1.6.RELEASE</org.springframework.version>
+        <org.springframework.version>4.3.9.RELEASE</org.springframework.version>
         <jackson2.version>2.6.1</jackson2.version>
         <mysql.version>5.1.39</mysql.version>
-        <guava.version>21.0</guava.version>
+        <mybatis.version>3.4.4</mybatis.version>
+        <guava.version>22.0</guava.version>
     </properties>
     <dependencies>
         <dependency>
@@ -24,16 +25,6 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-       <!-- <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-            <version>1.1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
@@ -44,17 +35,6 @@
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
         </dependency>
-        <!-- <dependency>
-             <groupId>org.slf4j</groupId>
-             <artifactId>slf4j-log4j12</artifactId>
-             <version>${slf4j.version}</version>
-         </dependency>
-         &lt;!&ndash; log4j &ndash;&gt;
-         <dependency>
-             <groupId>log4j</groupId>
-             <artifactId>log4j</artifactId>
-             <version>1.2.17</version>
-         </dependency>-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -67,17 +47,6 @@
             <version>2.0</version>
             <scope>provided</scope>
         </dependency>
-        <!-- commons -->
-       <!-- <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.4</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.5</version>
-        </dependency>-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -114,11 +83,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
             <version>${org.springframework.version}</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -140,10 +109,15 @@
             <version>${mysql.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+        <!--<dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
             <version>2.6.2</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -160,9 +134,9 @@
             <version>1.1.8</version>
         </dependency>
         <dependency>
-            <groupId>org.jsoup</groupId>
-            <artifactId>jsoup</artifactId>
-            <version>1.9.2</version>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>3.0.2</version>
         </dependency>
     </dependencies>
     <build>

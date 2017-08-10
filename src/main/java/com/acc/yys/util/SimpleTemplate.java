@@ -78,7 +78,7 @@ public final class SimpleTemplate implements Serializable {
                 String key = templateArgs.get(index);
                 String value = args == null ? null : args.get(key);
                 if (value == null)
-                    value = String.format("${%s}", key);
+                    value = "${" + key + "}";
                 builder.append(value);
             }
             index++;

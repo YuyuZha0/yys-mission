@@ -44,7 +44,6 @@ public final class JsonBody {
 
     public static class Builder {
 
-        private int status = OK;
         private String msg = "";
         private ImmutableMap.Builder<String, Object> data = ImmutableMap.builder();
 

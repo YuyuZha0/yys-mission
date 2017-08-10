@@ -3,7 +3,6 @@ package com.acc.yys.pojo;
 import com.google.common.base.MoreObjects;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  * Created by zhaoyy on 2017/5/23.
@@ -78,21 +77,27 @@ public final class CharacterDistribution implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(chapterName, battleName, roundName, characterName, count);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CharacterDistribution that = (CharacterDistribution) o;
+
+        if (count != that.count) return false;
+        if (!chapterName.equals(that.chapterName)) return false;
+        if (!battleName.equals(that.battleName)) return false;
+        if (!roundName.equals(that.roundName)) return false;
+        return characterName.equals(that.characterName);
+
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null)
-            return false;
-        if (!(obj instanceof CharacterDistribution))
-            return false;
-        CharacterDistribution o = (CharacterDistribution) obj;
-        return Objects.equals(chapterName, o.chapterName)
-                && Objects.equals(battleName, o.battleName)
-                && Objects.equals(roundName, o.roundName)
-                && Objects.equals(characterName, o.characterName)
-                && count == o.count;
+    public int hashCode() {
+        int result = chapterName.hashCode();
+        result = 31 * result + battleName.hashCode();
+        result = 31 * result + roundName.hashCode();
+        result = 31 * result + characterName.hashCode();
+        result = 31 * result + count;
+        return result;
     }
 }

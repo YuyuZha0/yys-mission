@@ -32,10 +32,7 @@
     <!--<logger name="com.apache.ibatis" level="TRACE"/>-->
     <logger name="org.springframework" level="INFO"/>
     <logger name="com.acc.yys" level="INFO"/>
-    <logger name="com.alibaba.druid.sql.DataSource" level="INFO"/>
-    <logger name="com.alibaba.druid.sql.Connection" level="INFO"/>
-    <logger name="com.alibaba.druid.sql.Statement" level="INFO"/>
-    <logger name="com.alibaba.druid.sql.ResultSet" level="INFO"/>
+    <logger name="com.acc.yys.dao" level="DEBUG"/>
 
     <!-- 日志输出级别 -->
     <root level="INFO">

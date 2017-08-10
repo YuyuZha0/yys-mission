@@ -1,26 +1,13 @@
 package com.acc.yys.dao;
 
-import com.acc.yys.util.SQLMgr;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
-
-import javax.sql.DataSource;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * Created by zhaoyy on 2017/5/27.
  */
-@Repository
-public class MessageDao {
+public interface MessageDao {
 
-    private final JdbcTemplate template;
-
-    @Autowired
-    public MessageDao(DataSource dataSource) {
-        this.template = new JdbcTemplate(dataSource);
-    }
-
-    public int insertMsg(String username, String email, String msg) {
-        return template.update(SQLMgr.getSqlById("insertMsg"), username, email, msg);
-    }
+    @Insert("insert into tb_msg(username,email,msg) values (#{username},#{email},#{msg});")
+    void insertMsg(@Param("username") String username, @Param("email") String email, @Param("msg") String msg);
 }

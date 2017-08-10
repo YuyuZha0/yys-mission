@@ -41,4 +41,25 @@ public final class Character implements Serializable {
                 .add("quality", quality)
                 .toString();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Character character = (Character) o;
+
+        if (!name.equals(character.name)) return false;
+        if (!imageName.equals(character.imageName)) return false;
+        return quality.equals(character.quality);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + imageName.hashCode();
+        result = 31 * result + quality.hashCode();
+        return result;
+    }
 }

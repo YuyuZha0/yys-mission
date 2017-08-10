@@ -14,23 +14,6 @@
     </context:component-scan>
 
 
-    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-        <property name="poolName" value="springHikariCP"/>
-        <property name="connectionTestQuery" value="SELECT 1"/>
-        <property name="dataSourceClassName" value="com.mysql.jdbc.jdbc2.optional.MysqlDataSource"/>
-        <property name="dataSourceProperties">
-            <props>
-                <prop key="url">${mysql.url}</prop>
-                <prop key="user">${mysql.username}</prop>
-                <prop key="password">${mysql.password}</prop>
-            </props>
-        </property>
-    </bean>
-
-    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
-        <constructor-arg ref="hikariConfig"/>
-    </bean>
-
     <!--<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
         <property name="corePoolSize" value="5"/>
         <property name="maxPoolSize" value="20"/>

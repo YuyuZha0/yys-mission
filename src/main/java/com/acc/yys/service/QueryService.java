@@ -58,6 +58,27 @@ public interface QueryService {
                     .add("distributions", distributions)
                     .toString();
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            QueryResult that = (QueryResult) o;
+
+            if (count != that.count) return false;
+            if (!locationName.equals(that.locationName)) return false;
+            return distributions.equals(that.distributions);
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result = locationName.hashCode();
+            result = 31 * result + distributions.hashCode();
+            result = 31 * result + count;
+            return result;
+        }
     }
 
     List<QueryResult> queryCharacterLocation(Character character);

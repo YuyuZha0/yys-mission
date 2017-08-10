@@ -42,7 +42,7 @@ public final class ApiController {
     }
 
     @RequestMapping("getQueryResult")
-    public JsonBody getChapterList(@RequestParam String query) {
+    public JsonBody getChapterList(@RequestParam String query, HttpServletRequest request) {
         Character character = fuzzyQueryService.queryCharacter(query);
         if (character == null)
             return JsonBody.builder()

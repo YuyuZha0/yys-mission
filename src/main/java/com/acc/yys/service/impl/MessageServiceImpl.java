@@ -3,11 +3,12 @@ package com.acc.yys.service.impl;
 import com.acc.yys.dao.MessageDao;
 import com.acc.yys.pojo.JsonBody;
 import com.acc.yys.service.MessageService;
+import com.acc.yys.service.MyBatisFactory;
 import com.acc.yys.util.HttpRequestUtils;
 import com.google.common.base.CharMatcher;
+import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,9 +23,6 @@ public final class MessageServiceImpl implements MessageService {
 
     private static final Logger logger = LoggerFactory.getLogger(MessageServiceImpl.class);
     private static final String MSG_COUNT_SESSION_KEY = "USER_MESSAGE_COUNT";
-
-    @Autowired
-    private MessageDao messageDao;
 
     @Override
     public JsonBody leaveMsg(String name, String email, String msg, HttpServletRequest request) {
@@ -52,8 +50,10 @@ public final class MessageServiceImpl implements MessageService {
                     .msg("超过最大留言次数")
                     .build(JsonBody.FORBIDDEN);
         }
-        try {
-            messageDao.insertMsg(name, email, msg);
+        try (SqlSession sqlSession = MyBatisFactory.sqlSessionFactory().openSession()) {
+            sqlSession.getMapper(MessageDao.class)
+                    .insertMsg(name, email, msg);
+            sqlSession.commit();
         } catch (Exception e) {
             if (msgCount.decrementAndGet() < 0)
                 session.removeAttribute(MSG_COUNT_SESSION_KEY);

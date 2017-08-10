@@ -1,7 +1,9 @@
 package com.acc.yys.service.impl;
 
+import com.acc.yys.dao.StaticDataDao;
 import com.acc.yys.pojo.Character;
 import com.acc.yys.service.FuzzyQueryService;
+import com.acc.yys.service.MyBatisFactory;
 import com.acc.yys.util.FastStrings;
 import com.github.stuxuhai.jpinyin.PinyinException;
 import com.github.stuxuhai.jpinyin.PinyinFormat;
@@ -13,16 +15,11 @@ import com.google.common.cache.LoadingCache;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.primitives.Floats;
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
+import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -54,33 +51,27 @@ public final class FuzzyQueryServiceImpl implements FuzzyQueryService {
         List<QueryIndex> indices = new ArrayList<>();
         Map<String, String> tipsMap = new HashMap<>();
         Map<String, Character> characterMap = new HashMap<>();
-        try (InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("characters.xml")) {
-            SAXReader reader = new SAXReader();
-            Document document = reader.read(is);
-            Element root = document.getRootElement();
-            final Iterator<Element> characterIterator = root.elementIterator("character");
-            while (characterIterator.hasNext()) {
-                Element e = characterIterator.next();
-                String name = e.attributeValue("name");
-                String imageName = e.attributeValue("image-name");
-                String quality = e.attributeValue("quality");
+        try (SqlSession session = MyBatisFactory.sqlSessionFactory().openSession()) {
+            StaticDataDao dao = session.getMapper(StaticDataDao.class);
+            for (Map<String, Object> m : dao.queryCharacterList()) {
+                String name = (String) m.get("character_name");
+                String imageName = (String) m.get("image_name");
+                String quality = (String) m.get("quality");
                 characterMap.put(name, new Character(name, imageName, quality));
                 String pinyin = PinyinHelper.convertToPinyinString(name, "", PinyinFormat.WITHOUT_TONE);
                 String shortPinyin = PinyinHelper.getShortPinyin(name);
                 indices.add(new QueryIndex(name, pinyin, shortPinyin));
             }
-            final Iterator<Element> tipIterator = root.elementIterator("tip");
-            while (tipIterator.hasNext()) {
-                Element e = tipIterator.next();
-                String content = e.attributeValue("content");
-                String ref = e.attributeValue("ref");
+            for (Map<String, Object> m : dao.queryTipList()) {
+                String content = (String) m.get("content");
+                String ref = (String) m.get("ref");
                 tipsMap.put(content, ref);
                 String pinyin = PinyinHelper.convertToPinyinString(content, "", PinyinFormat.WITHOUT_TONE);
                 String shortPinyin = PinyinHelper.getShortPinyin(content);
                 indices.add(new QueryIndex(content, pinyin, shortPinyin));
             }
 
-        } catch (IOException | DocumentException | PinyinException e) {
+        } catch (PinyinException e) {
             logger.error(e.getMessage(), e);
         }
         this.indices = ImmutableList.copyOf(indices);
@@ -162,7 +153,7 @@ public final class FuzzyQueryServiceImpl implements FuzzyQueryService {
             //System.out.println(score.realName + ":" + score.score);
             result.add(score.realName);
         }
-        return ImmutableList.copyOf(result);
+        return ImmutableList.copyOf(result.subList(0, Math.min(5, result.size())));
     }
 
     private static final class QueryIndex {
@@ -195,6 +186,25 @@ public final class FuzzyQueryServiceImpl implements FuzzyQueryService {
                 return o.realName.compareTo(realName);
             return Floats.compare(o.score, score);
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            QueryScore score1 = (QueryScore) o;
+
+            if (Float.compare(score1.score, score) != 0) return false;
+            return realName.equals(score1.realName);
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result = realName.hashCode();
+            result = 31 * result + (score != +0.0f ? Float.floatToIntBits(score) : 0);
+            return result;
+        }
     }
 
     @FunctionalInterface
@@ -206,10 +216,5 @@ public final class FuzzyQueryServiceImpl implements FuzzyQueryService {
     private static float getMatchScore(String source, String target) {
         int d = FastStrings.editDistance(source, target);
         return 1 - (d + 0.0f) / Math.max(source.length(), target.length());
-    }
-
-    public static void main(String[] args) {
-        FuzzyQueryServiceImpl service = new FuzzyQueryServiceImpl();
-        System.out.println(service.guessRealMeaning("红", -1));
     }
 }
