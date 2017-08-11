@@ -42,3 +42,20 @@ CREATE TABLE `tb_tip` (
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
+
+CREATE TABLE `tb_tc_airfare_bargain` (
+  `id`          INT(11)     NOT NULL AUTO_INCREMENT,
+  `start_code`  VARCHAR(15) NOT NULL,
+  `end_code`    VARCHAR(15) NOT NULL,
+  `fly_date`    DATETIME    NOT NULL,
+  `price`       INT(11)              DEFAULT NULL,
+  `discount`    INT(11)              DEFAULT NULL,
+  `start_city`  VARCHAR(63)          DEFAULT NULL,
+  `end_city`    VARCHAR(63)          DEFAULT NULL,
+  `href`        VARCHAR(1023)        DEFAULT NULL,
+  `update_time` DATETIME    NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `default_unique` (`start_code`, `end_code`, `fly_date`)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
