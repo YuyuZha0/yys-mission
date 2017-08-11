@@ -25,12 +25,18 @@ public final class ApiController {
 
     private static final Logger logger = LoggerFactory.getLogger(ApiController.class);
 
+    private final FuzzyQueryService fuzzyQueryService;
+    private final QueryService queryService;
+    private final MessageService messageService;
+
     @Autowired
-    private FuzzyQueryService fuzzyQueryService;
-    @Autowired
-    private QueryService queryService;
-    @Autowired
-    private MessageService messageService;
+    public ApiController(FuzzyQueryService fuzzyQueryService,
+                         QueryService queryService,
+                         MessageService messageService) {
+        this.fuzzyQueryService = fuzzyQueryService;
+        this.queryService = queryService;
+        this.messageService = messageService;
+    }
 
     @RequestMapping("getAutoComplement")
     public JsonBody getAutoComplement(@RequestParam String query,

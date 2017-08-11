@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public final class TcAirfareScheduler {
 
 
-    @Scheduled(cron = "0 0 4,16 * * *")
+    @Scheduled(cron = "${tc.crawler.cron}")
     public void getDataSilently() {
         TcAirfareUtils.startDumpingData();
     }

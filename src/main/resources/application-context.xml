@@ -1,20 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:p="http://www.springframework.org/schema/p"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:task="http://www.springframework.org/schema/task"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 			http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 			http://www.springframework.org/schema/context
-			http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+			http://www.springframework.org/schema/context/spring-context-3.0.xsd
+			http://www.springframework.org/schema/mvc
+			http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-3.0.xsd
+            http://www.springframework.org/schema/task
+			http://www.springframework.org/schema/task/spring-task.xsd">
 
     <context:property-placeholder location="classpath:config.properties"/>
-    <context:component-scan base-package="com.acc.yys">
-        <context:exclude-filter type="regex"
-                                expression="com.acc.yys.controller.*"/>
-    </context:component-scan>
-
+    <context:component-scan base-package="com.acc.yys"/>
     <task:annotation-driven/>
+    <mvc:annotation-driven/>
+
+    <!--<bean id="contentNegotiationManager"
+          class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="favorPathExtension"
+                  value="false"/>
+        <property name="favorParameter"
+                  value="false"/>
+        <property name="ignoreAcceptHeader"
+                  value="false"/>
+        <property name="mediaTypes">
+            <value>
+                atom=application/atom+xml
+                html=text/html
+                json=application/json
+                *=*/*
+            </value>
+        </property>
+    </bean>-->
+    <!-- 本地化 -->
+    <bean id="messageSource"
+          class="org.springframework.context.support.ResourceBundleMessageSource"
+          p:basename="message">
+    </bean>
 
 
     <!--<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
@@ -23,4 +51,14 @@
         <property name="queueCapacity" value="100"/>
     </bean>-->
 
+    <mvc:default-servlet-handler/>
+    <mvc:resources mapping="/assets/**"
+                   location="/assets/"
+                   cache-period="2592000"/>
+    <mvc:resources mapping="/images/**"
+                   location="/images/"
+                   cache-period="2592000"/>
+    <mvc:resources mapping="/favicon.ico"
+                   location="/favicon.ico"
+                   cache-period="2592000"/>
 </beans>

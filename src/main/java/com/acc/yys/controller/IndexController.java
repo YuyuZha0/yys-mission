@@ -30,10 +30,13 @@ public final class IndexController {
     private static final String UNIQUE_PUBLISH_ID = UUID.randomUUID()
             .toString().replace("-", "").toLowerCase();
 
-    @Value("${index.cache.enable}")
-    private boolean enableCache;
+    private final boolean enableCache;
 
     private volatile SimpleTemplate template = null;
+
+    public IndexController(@Value("${index.cache.enable}") boolean enableCache) {
+        this.enableCache = enableCache;
+    }
 
     @ResponseBody
     @RequestMapping(value = "/index", produces = "text/html;charset=utf-8")
