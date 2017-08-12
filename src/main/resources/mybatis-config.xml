@@ -12,6 +12,8 @@
                           value="jdbc:mysql://118.89.160.15:3306/yys?&amp;useUnicode=true&amp;characterEncoding=UTF8&amp;zeroDateTimeBehavior=convertToNull&amp;useSSL=true"/>
                 <property name="username" value="root"/>
                 <property name="password" value="xesPa_u7ew4uREcU"/>
+                <property name="poolPingQuery" value="SELECT 1" />
+                <property name="poolPingEnabled" value="true" />
             </dataSource>
         </environment>
     </environments>
