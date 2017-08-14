@@ -4,5 +4,6 @@ target
 out
 src/main/resources/config.properties
 src/main/resources/characters.xml
-src/mian/resources/chapters.xml
+src/main/resources/chapters.xml
+src/main/resources/mybatis-config.xml
 
