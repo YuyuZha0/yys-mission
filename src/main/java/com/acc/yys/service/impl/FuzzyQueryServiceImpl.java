@@ -3,7 +3,6 @@ package com.acc.yys.service.impl;
 import com.acc.yys.dao.StaticDataDao;
 import com.acc.yys.pojo.Character;
 import com.acc.yys.service.FuzzyQueryService;
-import com.acc.yys.service.MyBatisFactory;
 import com.acc.yys.util.FastStrings;
 import com.github.stuxuhai.jpinyin.PinyinException;
 import com.github.stuxuhai.jpinyin.PinyinFormat;
@@ -15,9 +14,9 @@ import com.google.common.cache.LoadingCache;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.primitives.Floats;
-import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -47,12 +46,11 @@ public final class FuzzyQueryServiceImpl implements FuzzyQueryService {
             });
 
     @SuppressWarnings("unchecked")
-    public FuzzyQueryServiceImpl() {
+    public FuzzyQueryServiceImpl(@Autowired StaticDataDao dao) {
         List<QueryIndex> indices = new ArrayList<>();
         Map<String, String> tipsMap = new HashMap<>();
         Map<String, Character> characterMap = new HashMap<>();
-        try (SqlSession session = MyBatisFactory.sqlSessionFactory().openSession()) {
-            StaticDataDao dao = session.getMapper(StaticDataDao.class);
+        try {
             for (Map<String, Object> m : dao.queryCharacterList()) {
                 String name = (String) m.get("character_name");
                 String imageName = (String) m.get("image_name");
@@ -82,33 +80,6 @@ public final class FuzzyQueryServiceImpl implements FuzzyQueryService {
         logger.info("find [{}] character map.", characterMap.size());
     }
 
-    @Override
-    public List<String> guessRealMeaning(String query, int limit) {
-        if (query == null || query.isEmpty())
-            return Collections.emptyList();
-        List<String> result = queryCache.getUnchecked(query);
-        if (limit < 0)
-            return ImmutableList.copyOf(result);
-        return ImmutableList.copyOf(result.subList(0, Math.min(limit, result.size())));
-    }
-
-    @Override
-    public Character queryCharacter(String characterName) {
-        if (characterName == null || characterName.isEmpty())
-            return null;
-        Character character = characterMap.get(characterName);
-        if (character != null)
-            return character;
-        String tip = tipsMap.get(characterName);
-        if (tip != null) {
-            return characterMap.get(tip);
-        }
-        List<String> guess = guessRealMeaning(characterName, 1);
-        if (guess.isEmpty())
-            return null;
-        return queryCharacter(guess.get(0));
-    }
-
     private static List<String> getRankedNameList(String query, List<QueryIndex> indices) {
         query = trimQuery(query);
         if (query.isEmpty())
@@ -123,7 +94,6 @@ public final class FuzzyQueryServiceImpl implements FuzzyQueryService {
         }
         return queryAndRank(query, indices, index -> index.realName);
     }
-
 
     private static String trimQuery(String query) {
         Matcher matcher = notQueryPtn.matcher(query);
@@ -154,6 +124,43 @@ public final class FuzzyQueryServiceImpl implements FuzzyQueryService {
             result.add(score.realName);
         }
         return ImmutableList.copyOf(result.subList(0, Math.min(5, result.size())));
+    }
+
+    private static float getMatchScore(String source, String target) {
+        int d = FastStrings.editDistance(source, target);
+        return 1 - (d + 0.0f) / Math.max(source.length(), target.length());
+    }
+
+    @Override
+    public List<String> guessRealMeaning(String query, int limit) {
+        if (query == null || query.isEmpty())
+            return Collections.emptyList();
+        List<String> result = queryCache.getUnchecked(query);
+        if (limit < 0)
+            return ImmutableList.copyOf(result);
+        return ImmutableList.copyOf(result.subList(0, Math.min(limit, result.size())));
+    }
+
+    @Override
+    public Character queryCharacter(String characterName) {
+        if (characterName == null || characterName.isEmpty())
+            return null;
+        Character character = characterMap.get(characterName);
+        if (character != null)
+            return character;
+        String tip = tipsMap.get(characterName);
+        if (tip != null) {
+            return characterMap.get(tip);
+        }
+        List<String> guess = guessRealMeaning(characterName, 1);
+        if (guess.isEmpty())
+            return null;
+        return queryCharacter(guess.get(0));
+    }
+
+    @FunctionalInterface
+    private interface Scorer {
+        String getScoreFiled(QueryIndex index);
     }
 
     private static final class QueryIndex {
@@ -205,16 +212,5 @@ public final class FuzzyQueryServiceImpl implements FuzzyQueryService {
             result = 31 * result + (score != +0.0f ? Float.floatToIntBits(score) : 0);
             return result;
         }
-    }
-
-    @FunctionalInterface
-    private interface Scorer {
-        String getScoreFiled(QueryIndex index);
-    }
-
-
-    private static float getMatchScore(String source, String target) {
-        int d = FastStrings.editDistance(source, target);
-        return 1 - (d + 0.0f) / Math.max(source.length(), target.length());
     }
 }

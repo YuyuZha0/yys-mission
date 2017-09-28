@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,6 +19,7 @@ import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Created by zhaoyy on 2017/5/19.
@@ -32,7 +34,7 @@ public final class IndexController {
 
     private final boolean enableCache;
 
-    private volatile SimpleTemplate template = null;
+    private final AtomicReference<SimpleTemplate> templateRef = new AtomicReference<>(null);
 
     public IndexController(@Value("${index.cache.enable}") boolean enableCache) {
         this.enableCache = enableCache;
@@ -46,23 +48,21 @@ public final class IndexController {
         if (!enableCache) {
             Map<String, String> args = ImmutableMap.of("version", UNIQUE_PUBLISH_ID,
                     "context", request.getContextPath());
-            SimpleTemplate template = readFromFileSystem(request);
+            SimpleTemplate template = readFromFileSystem(request.getServletContext());
             return template.render(args);
         }
-        if (template == null) {
-            synchronized (this) {
-                if (template == null) {
-                    template = readFromFileSystem(request);
-                }
-            }
+
+        if(templateRef.get() == null){
+            templateRef.compareAndSet(null, readFromFileSystem(request.getServletContext()));
         }
+
         Map<String, String> args = ImmutableMap.of("version", UNIQUE_PUBLISH_ID,
                 "context", request.getContextPath());
-        return template.render(args);
+        return templateRef.get().render(args);
     }
 
-    private static SimpleTemplate readFromFileSystem(HttpServletRequest request) {
-        String root = request.getServletContext().getRealPath("/");
+    private static SimpleTemplate readFromFileSystem(ServletContext context) {
+        String root = context.getRealPath("/");
         StringBuilder builder = new StringBuilder(root);
         if (!root.endsWith(File.separator))
             builder.append(File.separator);

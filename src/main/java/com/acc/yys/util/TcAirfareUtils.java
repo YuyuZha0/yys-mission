@@ -1,12 +1,10 @@
 package com.acc.yys.util;
 
 import com.acc.yys.dao.AirfareDao;
-import com.acc.yys.service.MyBatisFactory;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
 import org.jsoup.Jsoup;
 import org.slf4j.Logger;
@@ -32,6 +30,64 @@ public final class TcAirfareUtils {
 
     private TcAirfareUtils() {
 
+    }
+
+    private static String getResponseBody(String code, String callback) {
+        final String url = String.format(URL, code, callback);
+        try {
+            return Jsoup.connect(url)
+                    .header("accept-encoding", "gzip, deflate, br")
+                    .header("accept-language", "zh-CN,zh;q=0.8")
+                    .header("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
+                    .userAgent("Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36")
+                    .ignoreContentType(true)
+                    .execute()
+                    .body();
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return "";
+    }
+
+    private static String extractJson(String s, String callback) {
+        if (s == null || s.isEmpty())
+            return "[]";
+        String regex = String.format("(?<=%s\\(\\{\"state\":\"100\",\"list\":).+(?=\\}\\))", callback);
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(s);
+        if (matcher.find())
+            return matcher.group();
+        return "[]";
+    }
+
+    private static List<Airfare> parseJson(String content, ObjectMapper mapper) {
+        try {
+            return Arrays.asList(mapper.readValue(content, Airfare[].class));
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return Collections.emptyList();
+    }
+
+    private static void saveToMysql(List<Airfare> list, SqlSession session) {
+        AirfareDao dao = session.getMapper(AirfareDao.class);
+        for (Airfare airfare : list)
+            dao.insertOrUpdate(airfare);
+        session.commit();
+        session.clearCache();
+    }
+
+    public static void startDumpingData(SqlSession session) {
+        final ObjectMapper mapper = new ObjectMapper();
+        List<Airfare> list = new ArrayList<>();
+        Arrays.asList("PEK", "SHA", "NKG")
+                .forEach(code -> {
+                    String callback = "tc" + System.currentTimeMillis();
+                    String body = getResponseBody(code, callback);
+                    String content = extractJson(body, callback);
+                    list.addAll(parseJson(content, mapper));
+                });
+        saveToMysql(list, session);
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
@@ -114,68 +170,4 @@ public final class TcAirfareUtils {
 
     }
 
-    private static String getResponseBody(String code, String callback) {
-        final String url = String.format(URL, code, callback);
-        try {
-            return Jsoup.connect(url)
-                    .header("accept-encoding", "gzip, deflate, br")
-                    .header("accept-language", "zh-CN,zh;q=0.8")
-                    .header("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
-                    .userAgent("Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36")
-                    .ignoreContentType(true)
-                    .execute()
-                    .body();
-        } catch (IOException e) {
-            logger.error(e.getMessage(), e);
-        }
-        return "";
-    }
-
-
-    private static String extractJson(String s, String callback) {
-        if (s == null || s.isEmpty())
-            return "[]";
-        String regex = String.format("(?<=%s\\(\\{\"state\":\"100\",\"list\":).+(?=\\}\\))", callback);
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(s);
-        if (matcher.find())
-            return matcher.group();
-        return "[]";
-    }
-
-    private static List<Airfare> parseJson(String content, ObjectMapper mapper) {
-        try {
-            return Arrays.asList(mapper.readValue(content, Airfare[].class));
-        } catch (IOException e) {
-            logger.error(e.getMessage(), e);
-        }
-        return Collections.emptyList();
-    }
-
-    private static void saveToMysql(List<Airfare> list) {
-        try (SqlSession session = MyBatisFactory.sqlSessionFactory().openSession(ExecutorType.BATCH, false)) {
-            AirfareDao dao = session.getMapper(AirfareDao.class);
-            for (Airfare airfare : list)
-                dao.insertOrUpdate(airfare);
-            session.commit();
-            session.clearCache();
-        }
-    }
-
-    public static void startDumpingData() {
-        final ObjectMapper mapper = new ObjectMapper();
-        List<Airfare> list = new ArrayList<>();
-        Arrays.asList("PEK", "SHA", "NKG")
-                .forEach(code -> {
-                    String callback = "tc" + System.currentTimeMillis();
-                    String body = getResponseBody(code, callback);
-                    String content = extractJson(body, callback);
-                    list.addAll(parseJson(content, mapper));
-                });
-        saveToMysql(list);
-    }
-
-    public static void main(String[] args) throws IOException {
-        startDumpingData();
-    }
 }
